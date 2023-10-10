@@ -66,7 +66,7 @@ You don't want to mix up or intertwine your own code with WordPress and the code
 I've put an example plugin in the root directory of this project, called `myplugin`. This plugin is mounted on the plugins folder inside the WordPress container with the following mount:
 
 ```plaintext
-./myplugin:/var/www/html/wp-content/plugins/myplugin
+./example-plugin:/var/www/html/wp-content/plugins/example-plugin
 ```
 
 You can add more bind mounts like this to develop more plugins or a theme.
