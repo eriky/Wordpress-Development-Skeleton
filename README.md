@@ -1,9 +1,17 @@
 # Docker based Wordpress development skeleton
 
-This is my docker based Wordpress development skeleton. To use this setup, you need two things:
+This is my docker based Wordpress development skeleton. If you like it, you can freely use it.
+I've marked this repository as a 'Template repository' on GitHub. When you create a new repo through the GitHub UI, you can
+use this repository as a template. E.g., it will be copied without the git commit history.
 
-- Docker (Docker Deskop on Windows and/or Mac)
+After that, checkout the project on your development workstation.
+
+To use this setup, you need two things:
+
+- Docker
 - Docker Compose
+
+I'm going to assume you are familiar with Docker. if not, you have some catching up to do!
 
 You can start the project with the command:
 
