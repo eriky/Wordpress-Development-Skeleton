@@ -7,7 +7,7 @@ If you like this template you can freely use it for any purpose and in any way.
 
 ## Why?
 
-I was searching specially for a docker based development setup to use when developing plugins or themes, and was highly disappointed
+After searching for a good docker based development setup to use when developing plugins or themes, I was highly disappointed
 by the examples I found on the web.
 Most blog posts show you a Docker Compose file somewhat similar to mine. But most posts stop there. They don't tell you how to
 use it properly. Some outright tell you to start editing the files inside the WordPress installation. That **will** get messy quickly.
@@ -22,7 +22,7 @@ a noob when it comes to WordPress development. So, by all means, let me know wha
 I've marked this repository as a 'Template repository' on GitHub. When you create a new repo through the GitHub UI, you can use this
 repository as a template and it will be copied without the git commit history.
 
-After creating your new repo based on this template, checkout that project on your development workstation.
+After creating your new repo based on this template, clone that project on your development workstation.
 
 To use this setup, you need two things:
 
