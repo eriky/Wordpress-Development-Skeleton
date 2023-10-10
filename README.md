@@ -26,8 +26,8 @@ After creating your new repo based on this template, clone that project on your 
 
 To use this setup, you need two things:
 
-- Docker
-- Docker Compose
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 I'm going to assume you are familiar with Docker. If not, you have some catching up to do!
 
