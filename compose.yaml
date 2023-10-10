@@ -1,0 +1,43 @@
+services:
+  db:
+    # We use a mariadb image which supports both amd64 & arm64 architecture
+    image: mariadb:latest
+    container_name: mariadb
+    command: "--default-authentication-plugin=mysql_native_password"
+    volumes:
+      - ./docker_data/mariadb:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=somewordpress
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    depends_on:
+      - db
+    volumes:
+      - ./docker_data/wordpress:/var/www/html
+      - ./myplugin:/var/www/html/wp-content/plugins/myplugin
+    # By binding to 127.0.0.1, nobody can access your dev site
+    # from outside (e.g., people on the same network)
+    ports:
+      - 127.0.0.1:8080:80
+    restart: unless-stopped
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+
+  # Adminer allows you to edit/inspect your db tables; supports arm64.
+  adminer:
+    image: adminer:latest
+    depends_on:
+      - db
+    container_name: adminer
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:8081:8080
