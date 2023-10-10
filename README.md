@@ -1,10 +1,10 @@
-# Docker based WordPress development template
+# Docker based WordPress development skeleton
 
 This repo can be used as a base for your plugin or theme development based on docker containers.
 It will provide a working WordPress installation, and a way to clearly separate your code from
 that installation and apply version control to it.
 
-If you like this template you can freely use it for any purpose and in any way.
+If you like this skeleton you can freely use it for any purpose and in any way.
 
 ## Why?
 
@@ -19,7 +19,7 @@ The major issues I noticed:
 - Most will tell you to start editing the files inside the WordPress installation. That **will** get messy quickly.
 - They do not take version control into consideration _at all_.
 
-This repository template is an improvement over those half-baked examples, but I'm sure there are tons of ways to improve on this,
+This repo is an improvement over those half-baked examples, but I'm sure there are tons of ways to improve on this,
 because I'm basically a noob when it comes to WordPress development. So, by all means, let me know whatever I can improve.
 
 ## Getting started
@@ -48,13 +48,13 @@ This will start three containers:
 2. A WordPress site on http://localhost:8080
 3. An Adminer instance on http://localhost:8081
 
-You need to perform the inital installation of WordPress yourself, e.g.:
+On first login, you need to perform the initial installation of WordPress yourself:
 
 - pick a language
 - choose a site name
 - create a user/pass
 
-## How _not_ to use this template
+## How _not_ to use this skeleton
 
 To create a plugin or theme, you could simply start adding files in the
 plugins and themes folders. **Don't do this!** Any plugins you install from within WordPress will also be placed there.
@@ -63,7 +63,7 @@ You don't want to mix up or intertwine your own code with WordPress and the code
 
 ## So what _should_ you do instead?
 
-I've put an example plugin in the root directory of this project, called `myplugin`. This plugin is mounted on the plugins folder inside the WordPress container with the following mount:
+I've put an example plugin in the root directory of this project, called `example-plugin`. This plugin is mounted on the plugins folder inside the WordPress container with the following mount:
 
 ```plaintext
 ./example-plugin:/var/www/html/wp-content/plugins/example-plugin
@@ -71,7 +71,7 @@ I've put an example plugin in the root directory of this project, called `myplug
 
 You can add more bind mounts like this to develop more plugins or a theme.
 
-This setup has a a few advantages:
+This setup has a few advantages:
 
 - Your code is easily accessible
 - You can easily add your code to version control
@@ -79,7 +79,7 @@ This setup has a a few advantages:
 
 ## How to start fresh?
 
-If you want to start fresh again, you can remove the `docker_data` directory. You can off course also remove the data
+If you want to start fresh again, you can remove the `docker_data` directory. You can of course also remove the data
 of just the DB or just the WordPress installation. After restart, the WordPress container will notice the removed files
 and recreate the basic WordPress installation for us.
 
