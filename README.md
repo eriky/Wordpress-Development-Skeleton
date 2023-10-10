@@ -79,9 +79,11 @@ This setup has a a few advantages:
 
 ## How to start fresh?
 
-If you want to start fresh again, you can remove the `docker_data` directory. **Caution**: this will remove the WordPress installation **and** the database.
+If you want to start fresh again, you can remove the `docker_data` directory. You can off course also remove the data
+of just the DB or just the WordPress installation. After restart, the WordPress container will notice the removed files
+and recreate the basic WordPress installation for us.
 
-For example:
+**Caution**: this example will remove/reset the WordPress installation **and** the database:
 
 ```shell
 docker compose down
@@ -89,19 +91,17 @@ rm -rf docker_data
 docker compose up -d
 ```
 
-After restart, the WordPress container will notice the removed files and recreate the basic WordPress installation for us.
-
 You now have a fresh WordPress install again, and you'll need to reinitialize WordPress.
 
-## How to use specific versions
+## How to use specific versions or pin versions
 
-In the `compose.yaml` file, the image versions are specific as _latest_, which will download the newest, most shiny version of everything.
-The WordPress image is being shipped with a [ton of tags though](https://hub.docker.com/_/wordpress), and you can easily get a very specific
+In the `compose.yaml` file, the image versions are specified as _latest_, which will download the newest version of everything by default.
+The official WordPress image is shipped with a [ton of tags though](https://hub.docker.com/_/wordpress), and you can easily get a very specific
 version if you need.
 
 If instead you want to try a specific version of the image, say 6.0.3-php8.1-fpm, you can change that image specification to:
 
-```
+```yaml
 services:
   wordpress:
     image: wordpress:6.0.3-php8.1-fpm
@@ -110,7 +110,7 @@ services:
     ...
 ```
 
-Note that you will need to empty the `docker_data/wordpress` folder, and you will likely need to purge the database
+Note that you will need to empty the `docker_data/wordpress` folder, see the 'How to start fresh' section, and you will likely need to purge the database
 files as well, especially when you downgrade to much lower versions.
 
 You can change the MariaDB version in a similar way.
@@ -119,4 +119,4 @@ You can change the MariaDB version in a similar way.
 
 1. If you prefer, you could switch to MySQL but MariaDB better supports ARM64 (for arm based Macs). They are generally super compatible so it shouldn't matter at all.
 2. I like Adminer because it's super lightweight and fully supports ARM64 as well. If you want, you can switch to PHPMyAdmin.
-3. I bind to 127.0.0.1 explicitly. If you don't, you will bind to all interfaces, exposing your development installation to anyone that can reach your ip address which is generally not what you'd want.
+3. I bind to 127.0.0.1 explicitly. If you don't, you will bind to all interfaces, exposing your development installation to anyone that can reach your ip address which is generally not what you'd want during development.
