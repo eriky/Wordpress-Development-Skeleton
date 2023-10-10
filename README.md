@@ -1,6 +1,9 @@
-# Docker based WordPress development skeleton
+# Docker based WordPress development template
 
-This is my docker based WordPress development skeleton. If you like it, you can freely use it for any purpose and in any way.
+This repo can be used as a base for your plugin or theme development. It will provide a working WordPress installation, and a way
+to clearly separate your code from that installation and apply version control to it.
+
+If you like this template you can freely use it for any purpose and in any way.
 
 ## Why?
 
@@ -13,9 +16,6 @@ Also, most blog posts do not take version control into consideration _at all_.
 
 This is an improvement over those half-baked examples, but I'm sure there are tons of ways to improve on this, because I'm basically
 a noob when it comes to WordPress development. So, by all means, let me know whatever I can improve.
-
-This repo can be used as a based for your plugin or theme development. It will provide a working WordPress installation, and a way
-to clearly separate your code from that installation and apply version control to it.
 
 ## Getting started
 
@@ -49,7 +49,7 @@ You need to perform the inital installation of WordPress yourself, e.g.:
 - choose a site name
 - create a user/pass
 
-## How _not_ to use this skeleton project
+## How _not_ to use this template
 
 To create a plugin or theme, you could simply start adding files in the
 plugins and themes folders. **Don't do this!** Any plugins you install from within WordPress will also be placed there.
