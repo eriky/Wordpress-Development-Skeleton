@@ -1,7 +1,8 @@
 # Docker based WordPress development template
 
-This repo can be used as a base for your plugin or theme development. It will provide a working WordPress installation, and a way
-to clearly separate your code from that installation and apply version control to it.
+This repo can be used as a base for your plugin or theme development based on docker containers.
+It will provide a working WordPress installation, and a way to clearly separate your code from
+that installation and apply version control to it.
 
 If you like this template you can freely use it for any purpose and in any way.
 
@@ -9,13 +10,17 @@ If you like this template you can freely use it for any purpose and in any way.
 
 After searching for a good docker based development setup to use when developing plugins or themes, I was highly disappointed
 by the examples I found on the web.
+
 Most blog posts show you a Docker Compose file somewhat similar to mine. But most posts stop there. They don't tell you how to
-use it properly. Some outright tell you to start editing the files inside the WordPress installation. That **will** get messy quickly.
+use it properly.
 
-Also, most blog posts do not take version control into consideration _at all_.
+The major issues I noticed:
 
-This is an improvement over those half-baked examples, but I'm sure there are tons of ways to improve on this, because I'm basically
-a noob when it comes to WordPress development. So, by all means, let me know whatever I can improve.
+- Most will tell you to start editing the files inside the WordPress installation. That **will** get messy quickly.
+- They do not take version control into consideration _at all_.
+
+This repository template is an improvement over those half-baked examples, but I'm sure there are tons of ways to improve on this,
+because I'm basically a noob when it comes to WordPress development. So, by all means, let me know whatever I can improve.
 
 ## Getting started
 
@@ -87,6 +92,28 @@ docker compose up -d
 After restart, the WordPress container will notice the removed files and recreate the basic WordPress installation for us.
 
 You now have a fresh WordPress install again, and you'll need to reinitialize WordPress.
+
+## How to use specific versions
+
+In the `compose.yaml` file, the image versions are specific as _latest_, which will download the newest, most shiny version of everything.
+The WordPress image is being shipped with a [ton of tags though](https://hub.docker.com/_/wordpress), and you can easily get a very specific
+version if you need.
+
+If instead you want to try a specific version of the image, say 6.0.3-php8.1-fpm, you can change that image specification to:
+
+```
+services:
+  wordpress:
+    image: wordpress:6.0.3-php8.1-fpm
+    container_name: wordpress
+    ...
+    ...
+```
+
+Note that you will need to empty the `docker_data/wordpress` folder, and you will likely need to purge the database
+files as well, especially when you downgrade to much lower versions.
+
+You can change the MariaDB version in a similar way.
 
 ## Notes
 
